@@ -1,0 +1,39 @@
+def ground_shipping(weight):
+  if weight <2:
+    return weight*1.5 + 20
+  if weight >2 and weight < 6:
+    return weight*3 + 20
+  if weight >6 and weight < 10:
+    return weight*4 + 20
+  if weight >10 :
+    return weight*4.75 + 20
+
+premium_ground_shipping = 125
+
+def  drone_shipping(weight):
+  if weight <2:
+    return weight*4.5
+  if weight >2 and weight < 6:
+    return weight*9
+  if weight >6 and weight < 10:
+    return weight*12
+  if weight >10 :
+    return weight*14.25
+  
+def desicion(weight):
+  if drone_shipping(weight) > ground_shipping(weight):
+    print("Ground is cheap")
+    print(ground_shipping(weight))
+  if drone_shipping(weight) < ground_shipping(weight):
+    print("Drone is cheap")
+    print(drone_shipping(weight))
+
+def process(weight): 
+    ground_shipping(weight)
+    drone_shipping(weight)
+    desicion(weight)    
+
+process(4.8)
+process(41.5)
+
+  
