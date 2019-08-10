@@ -1,0 +1,9 @@
+single_digits = range(0,10)
+print(list(single_digits))
+for items in single_digits:
+  print(items)
+squares=[]
+squares = [signle**2 for signle in single_digits]
+print(list(squares))
+cubes = [signle**3 for signle in single_digits]
+print(list(cubes))
