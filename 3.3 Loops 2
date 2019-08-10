@@ -1,0 +1,11 @@
+#Write your function here, Odd Indices
+def odd_indices(lst):
+  addlst = []
+  i = 0
+  while i in range(len(lst)):
+    if (i+1) % 2 ==0:
+      addlst = addlst.append(lst[i])
+      return addlst
+
+#Uncomment the line below when your function is done
+print(odd_indices([4, 3, 7, 10, 11, -2]))
