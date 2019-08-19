@@ -1,3 +1,4 @@
+#zip() combine two list into a dictionary as keys and values
 drinks = ["espresso", "chai", "decaf", "drip"]
 caffeine = [64, 40, 0, 120]
 zipped_drinks = zip(drinks,caffeine)
@@ -9,11 +10,14 @@ print(drinks_to_caffeine)
 
 songs = ["Like a Rolling Stone", "Satisfaction", "Imagine", "What's Going On", "Respect", "Good Vibrations"]
 playcounts = [78, 29, 44, 21, 89, 5]
+
 #use a list comprehension to create a dictionary from two lists
 plays = {song:playcount for song, playcount in zip(songs, playcounts)}
 print(plays)
+
 #Add new value
 plays.update({"Purple Haze":1})
+
 #Overwrite value
 plays["Respect"]=94
 library = {"The Best Songs":plays, "Sunday Feelings":{}}
@@ -28,3 +32,54 @@ try:
   print(caffeine_level["matcha"])
 except KeyError:
   print("Unknown Caffeine Level")
+  
+----------------------
+
+#delete a key
+available_items = {"health potion": 10, "cake of the cure": 5, "green elixir": 20, "strength sandwich": 25, "stamina grains": 15, "power stew": 30}
+health_points = 20
+
+health_points += available_items.pop("stamina grains", 0)
+health_points += available_items.pop("power stew", 0)
+health_points += available_items.pop("mystic bread", 0)
+
+print(available_items)
+print(health_points)
+
+--------------------
+
+#call all keys
+user_ids = {"teraCoder": 100019, "pythonGuy": 182921, "samTheJavaMaam": 123112, "lyleLoop": 102931, "keysmithKeith": 129384}
+num_exercises = {"functions": 10, "syntax": 13, "control flow": 15, "loops": 22, "lists": 19, "classes": 18, "dictionaries": 18}
+
+users = user_ids.keys()
+lessons = num_exercises.keys()
+
+print(users)
+print(lessons)
+
+-------------------
+
+#get all values
+num_exercises = {"functions": 10, "syntax": 13, "control flow": 15, "loops": 22, "lists": 19, "classes": 18, "dictionaries": 18}
+
+total_exercises = 0
+for item in num_exercises.values():
+  total_exercises += item
+print(total_exercises)
+
+-----------------------
+
+#Review
+tarot = { 1:	"The Magician", 2:	"The High Priestess", 3:	"The Empress", 4:	"The Emperor", 5:	"The Hierophant", 6:	"The Lovers", 7:	"The Chariot", 8:	"Strength", 9:	"The Hermit", 10:	"Wheel of Fortune", 11:	"Justice", 12:	"The Hanged Man", 13:	"Death", 14:	"Temperance", 15:	"The Devil", 16:	"The Tower", 17:	"The Star", 18:	"The Moon", 19:	"The Sun", 20:	"Judgement", 21:	"The World", 22: "The Fool"}
+
+spread = {}
+
+spread["past"] = tarot.pop(13)
+spread["present"] = tarot.pop(22)
+spread["future"] = tarot.pop(10)
+
+#for key, value in spread.items():
+#  print("Your "+key+" is the "+value+" card. ")
+for num, meaning in spread.items():
+  print("Your" + num+ "is the" +meaning + "card.")
