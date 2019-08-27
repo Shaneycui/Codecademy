@@ -49,3 +49,75 @@ class User:
 class Admin(User):
   def edit_message(self, message, new_text):
     message.text = new_text
+    
+-------------------------------
+#super()
+class PotatoSalad:
+  def __init__(self, potatoes, celery, onions):
+    self.potatoes = potatoes
+    self.celery = celery
+    self.onions = onions
+    
+class SpecialPotatoSalad(PotatoSalad):
+  def __init__(self, potatoes, celery, onions):
+    super().__init__(potatoes, celery, onions)
+    self.raisins = 40
+    
+--------------------------------
+#Interfaces
+class InsurancePolicy:
+  def __init__(self, price_of_item):
+    self.price_of_insured_item = price_of_item
+    
+class VehicleInsurance(InsurancePolicy):
+  def get_rate(self):
+    return self.price_of_insured_item * .001
+
+class HomeInsurance(InsurancePolicy):
+  def get_rate(self):
+    return self.price_of_insured_item * .00005
+
+-------------------------------
+#Polymorphism
+class Atom:
+  def __init__(self, label):
+    self.label = label
+    
+  def __add__(self, other):
+    return Molecule([self, other])
+    
+class Molecule:
+  def __init__(self, atoms):
+    if type(atoms) is list:
+	    self.atoms = atoms
+      
+sodium = Atom("Na")
+chlorine = Atom("Cl")
+salt = Molecule([sodium, chlorine])
+# salt = sodium + chlorine
+
+print(Atom('Na'))
+print(salt)
+
+-------------------------------
+#Dunder Methods II
+class UserGroup:
+  def __init__(self, users, permissions):
+    self.user_list = users
+    self.permissions = permissions
+
+  def __iter__(self):
+    return iter(self.user_list)
+
+  def __len__(self):
+    return len(self.user_list)
+
+  def __contains__(self, user):
+    return user in self.user_list
+    
+  #####
+  Explanation
+  __init__, our constructor, which sets a list of users to the instance variable self.user_list and sets the group’s permissions when we create a new UserGroup.
+__iter__, the iterator, we use the iter() function to turn the list self.user_list into an iterator so we can use for user in user_group syntax. For more information on iterators, review Python’s documentation of Iterator Types.
+__len__, the length method, so when we call len(user_group) it will return the length of the underlying self.user_list list.
+__contains__, the check for containment, allows us to use user in user_group syntax to check if a User exists in the user_list we have.
